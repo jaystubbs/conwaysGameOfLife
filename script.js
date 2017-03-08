@@ -2,11 +2,11 @@ var CONWAYS_GAME_OF_LIFE = (function () {
 
     var gridOffset = 20;
 
-    var numberColumns = 75;
-    var numberRows = 75;
+    var numberColumns = 100;
+    var numberRows = 100;
 
-    var cellWidth = 10;
-    var cellHeight = 10;
+    var cellWidth = 7;
+    var cellHeight = 7;
 
     var gridWidth = numberColumns * cellWidth;
     var gridHeight = numberRows * cellHeight;
@@ -57,7 +57,7 @@ var CONWAYS_GAME_OF_LIFE = (function () {
 
             this.renderGrid();
 
-            document.getElementById("canvas").addEventListener('mousemove', this.regenerate.bind(this), false);
+            document.getElementById('canvas').addEventListener('mousemove', this.regenerate.bind(this), false);
         },
 
         regenerate: function () {
@@ -108,7 +108,8 @@ var CONWAYS_GAME_OF_LIFE = (function () {
         },
 
         renderGrid: function () {
-            var context = document.getElementById("canvas").getContext("2d");
+            var context = document.getElementById('canvas').getContext('2d');
+            context.clearRect(gridOffset, gridOffset, gridWidth, gridHeight);
 
             for (var x = 0; x < numberColumns; x++) {
                 var cellColumn = [];
@@ -117,9 +118,6 @@ var CONWAYS_GAME_OF_LIFE = (function () {
                     if (thisGeneration[x][y].isAlive()) {
                         context.fillStyle = 'green';
                         context.fillRect(gridOffset + (x * cellWidth), gridOffset + (y * cellHeight), cellWidth, cellHeight)
-                    }
-                    else {
-                        context.clearRect(gridOffset + (x * cellWidth), gridOffset + (y * cellHeight), cellWidth, cellHeight)
                     }
                 }
             }
