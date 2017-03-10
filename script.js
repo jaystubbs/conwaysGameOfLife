@@ -57,7 +57,7 @@ var CONWAYS_GAME_OF_LIFE = (function () {
 
             this.renderGrid();
 
-            document.getElementById('canvas').addEventListener('mousemove', this.regenerate.bind(this), false);
+            setInterval(this.regenerate.bind(this), 50);
         },
 
         regenerate: function () {
@@ -116,7 +116,7 @@ var CONWAYS_GAME_OF_LIFE = (function () {
 
                 for (var y = 0; y < numberRows; y++) {
                     if (thisGeneration[x][y].isAlive()) {
-                        context.fillStyle = 'green';
+                        context.fillStyle = '#069e61';
                         context.fillRect(gridOffset + (x * cellWidth), gridOffset + (y * cellHeight), cellWidth, cellHeight)
                     }
                 }
